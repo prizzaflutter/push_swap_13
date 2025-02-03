@@ -8,6 +8,10 @@ SRC= ./Mandatory/push_swap.c ./lib/function_from_lib/ft_atoi.c ./lib/function_fr
 	./lib/function_from_lib/ft_lstmap.c ./lib/function_from_lib/ft_lstnew.c ./lib/function_from_lib/ft_lstsize.c \
 	./lib/function_from_lib/ft_putchar.c ./lib/function_from_lib/ft_putstr.c ./lib/function_from_lib/ft_split.c \
 	./lib/function_from_lib/ft_strnstr.c ./lib/get_next_line/get_next_line.c ./lib/get_next_line/get_next_line_utils.c \
+	./Mandatory/functions/pa.c ./Mandatory/functions/pb.c ./Mandatory/functions/ra.c ./Mandatory/functions/rb.c \
+	./Mandatory/functions/rr.c ./Mandatory/functions/rra.c ./Mandatory/functions/rrb.c ./Mandatory/functions/rrr.c \
+	./Mandatory/functions/sa.c ./Mandatory/functions/sb.c ./Mandatory/functions/ss.c ./Mandatory/helpers/sort_3.c 
+
 
 SRC_BNS= ./Bonus/push_swap_bonus.c
 
