@@ -1,29 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstclear.c                                      :+:      :+:    :+:   */
+/*   ra.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: iaskour <iaskour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/02 12:26:18 by iaskour           #+#    #+#             */
-/*   Updated: 2025/01/29 09:20:10 by iaskour          ###   ########.fr       */
+/*   Created: 2025/02/03 09:15:51 by iaskour           #+#    #+#             */
+/*   Updated: 2025/02/03 09:31:13 by iaskour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../Mandatory/push_swap.h"
+#include "../push_swap.h"
 
-void	ft_lstclear(t_list **lst, void (*del)(void*))
+void	ra(t_list **a)
 {
-	t_list	*tmp;
-
-	if (lst == NULL || (*lst) == NULL || del == NULL)
+	t_list *top_a;
+	t_list *travers;
+	
+	if(!a || !(*a)|| !(*a)->next)
 		return ;
-	while (*lst)
-	{
-		tmp = (*lst)->next;
-		del((*lst)->content);
-		free(*lst);
-		*lst = tmp;
-	}
-	*lst = NULL;
+	top_a = *a;
+	*a  = (*a)->next;
+	travers = top_a;
+	while (travers->next)
+		travers = travers->next;
+	travers->next = top_a;
+	top_a->next = NULL;
+	top_a->prev = travers;
 }

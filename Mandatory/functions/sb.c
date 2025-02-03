@@ -1,13 +1,13 @@
 #include "../push_swap.h"
 
-void sa(t_list **a)
+void sb(t_list **b)
 {
 	t_list *first;
 	t_list *second;
 
-	if(!a || !(*a)|| !(*a)->next)
+	if(!b || !(*b)|| !(*b)->next)
 		return ;
-	first = *a;
+	first = *b;
 	second = first->next;
 
 	first->next= second->next;
@@ -17,5 +17,5 @@ void sa(t_list **a)
 	second->prev= NULL;
 	second->next= first;
 	first->prev= second;
-	*a = second; 
+	*b = second; 
 }

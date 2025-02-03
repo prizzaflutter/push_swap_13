@@ -1,29 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstclear.c                                      :+:      :+:    :+:   */
+/*   rra.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: iaskour <iaskour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/02 12:26:18 by iaskour           #+#    #+#             */
-/*   Updated: 2025/01/29 09:20:10 by iaskour          ###   ########.fr       */
+/*   Created: 2025/02/03 09:30:39 by iaskour           #+#    #+#             */
+/*   Updated: 2025/02/03 09:42:59 by iaskour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../Mandatory/push_swap.h"
+#include "../push_swap.h"
 
-void	ft_lstclear(t_list **lst, void (*del)(void*))
+void rra(t_list **a)
 {
-	t_list	*tmp;
-
-	if (lst == NULL || (*lst) == NULL || del == NULL)
+	t_list *last_a;
+	t_list *before_last_a;
+	
+	if(!a || !(*a)|| !(*a)->next)
 		return ;
-	while (*lst)
-	{
-		tmp = (*lst)->next;
-		del((*lst)->content);
-		free(*lst);
-		*lst = tmp;
-	}
-	*lst = NULL;
+	last_a = *a;
+	while (last_a->next)
+		last_a = last_a->next;
+	before_last_a = last_a->prev;
+	before_last_a->next = NULL;
+	last_a->prev = NULL;
+	last_a->next = *a;
+	(*a)->prev = last_a;
+	*a = last_a;
 }
