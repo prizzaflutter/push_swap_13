@@ -18,4 +18,5 @@ void sb(t_list **b)
 	second->next= first;
 	first->prev= second;
 	*b = second; 
+	ft_putstr("sb\n", 1);
 }

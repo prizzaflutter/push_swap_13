@@ -6,7 +6,7 @@
 /*   By: iaskour <iaskour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 09:00:48 by iaskour           #+#    #+#             */
-/*   Updated: 2025/02/03 10:44:45 by iaskour          ###   ########.fr       */
+/*   Updated: 2025/02/10 11:03:24 by iaskour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,4 +28,5 @@ void pa(t_list **a, t_list **b)
     if(*a)
         (*a)->prev = top_b;
     *a = top_b;
+    ft_putstr("pa\n", 1);
 }

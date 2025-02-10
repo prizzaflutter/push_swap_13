@@ -1,0 +1,11 @@
+{
+    "files.associations": {
+        "memory": "c",
+        "utility": "c",
+        "push_swap.h": "c",
+        "chrono": "c",
+        "iterator": "c",
+        "__config": "c",
+        "algorithm": "c"
+    }
+}

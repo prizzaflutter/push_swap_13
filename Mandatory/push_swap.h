@@ -8,11 +8,12 @@
 
 typedef struct s_list
 {
-	void*		content;
+	int			content;
 	int			index;
 	int 		cost;
 	int	 		above_median;
-	struct s_list	*target;
+	int			cheapest;
+	struct s_list   *target_node;
 	struct s_list	*next;
 	struct s_list	*prev;
 }	t_list;
@@ -23,12 +24,10 @@ int		ft_isdigit(int a);
 char	*ft_itoa(int n);
 void	ft_lstadd_back(t_list **lst, t_list *new);
 void	ft_lstadd_front(t_list **lst, t_list *new);
-void	ft_lstclear(t_list **lst, void (*del)(void *));
-void	ft_lstdelone(t_list *lst, void (*del)(void*));
-void	ft_lstiter(t_list *lst, void (*f)(void *));
+void	ft_lstclear(t_list **lst);
+// void	ft_lstdelone(t_list *lst, void (*del)(void*));
 t_list	*ft_lstlast(t_list *lst);
-t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
-t_list	*ft_lstnew(void	*content);
+t_list	*ft_lstnew(int content);
 int		ft_lstsize(t_list *lst);
 int		ft_putchar(char c, int fd);
 void	ft_putstr(char *str, int fd);
@@ -49,5 +48,27 @@ void	rrr(t_list **a, t_list **b);
 
 
 int sort_3 (t_list **stack_a);
+void sort_stack(t_list **stack_a , t_list **stack_b);
+
+int get_target_position_larger(t_list *stack_a , int number);
+int get_target_position_smaller(t_list *stack_b , int number);
+// void calculate_cost (t_list *stack_a, t_list *stack_b, int size_a, int size_b);
+// void move_a_to_b(t_list **stack_a, t_list **stack_b, t_list *element);
+// void move_b_to_a(t_list **stack_a, t_list **stack_b, t_list *element);
+// void calculate_cost_b (t_list *stack_a, t_list *stack_b, int size_a, int size_b);
+int get_element_position (t_list *stack_a, t_list *element);
+int is_stack_a_sorted(t_list *stack_a);
+void set_index_median (t_list *stack);
+void set_target_a (t_list *a, t_list *b);
+void set_cost_a (t_list *a, t_list *b);
+void set_cheapest (t_list *a);
+void set_target_b (t_list *a, t_list *b);
+void set_cost_b (t_list *a, t_list *b);
+void set_cheapest_b (t_list *b);
+void move_a_to_b (t_list **stack_a , t_list **stack_b);
+void move_b_to_a (t_list **stack_a , t_list **stack_b);
+t_list *get_max_node (t_list *b);
+void min_on_top (t_list **a);
+
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: iaskour <iaskour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 09:44:51 by iaskour           #+#    #+#             */
-/*   Updated: 2025/02/03 09:45:50 by iaskour          ###   ########.fr       */
+/*   Updated: 2025/02/10 11:03:51 by iaskour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,4 +28,5 @@ void rrb(t_list **b)
 	last_b->next = *b;
 	(*b)->prev = last_b;
 	*b = last_b;
+	ft_putstr("rrb\n", 1);
 }

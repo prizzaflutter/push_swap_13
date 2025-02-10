@@ -6,26 +6,22 @@
 /*   By: iaskour <iaskour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 12:26:18 by iaskour           #+#    #+#             */
-/*   Updated: 2025/02/03 15:29:57 by iaskour          ###   ########.fr       */
+/*   Updated: 2025/02/10 11:10:03 by iaskour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../Mandatory/push_swap.h"
 #include <stdio.h>
 
-void	ft_lstclear(t_list **lst, void (*del)(void*))
+void	ft_lstclear(t_list **lst)
 {
 	t_list	*tmp;
 
-	if (lst == NULL || (*lst) == NULL || del == NULL)
-		{
-			printf("askour 1\n");
+	if (lst == NULL || (*lst) == NULL)
 			return ;
-		}
 	while (*lst)
 	{
 		tmp = (*lst)->next;
-		del((*lst)->content);
 		free(*lst);
 		*lst = tmp;
 	}

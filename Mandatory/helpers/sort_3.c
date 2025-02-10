@@ -6,7 +6,7 @@
 /*   By: iaskour <iaskour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 16:38:17 by iaskour           #+#    #+#             */
-/*   Updated: 2025/02/03 16:56:35 by iaskour          ###   ########.fr       */
+/*   Updated: 2025/02/10 17:28:00 by iaskour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,15 @@
 
 int sort_3 (t_list **stack_a)
 {
-	int first = *(int *)(*stack_a)->content;
-	int second = *(int *)(*stack_a)->next->content;
-	int third = *(int *)(*stack_a)->next->next->content;
+	t_list *beggest_node = get_max_node(*stack_a);
 
-	if(first > second && second > third)
-		return (sa(stack_a), rra(stack_a), 1);
-	else if (first > third && second < third)
-		return (ra(stack_a), 1);
-	else if (second > first && first > third)
-		return (rra(stack_a), 1);
-	else if (third > first && first > second)
-		return (sa(stack_a), 1);
-	else if (second > third && third > first)
-		return (sa(stack_a), ra(stack_a), 1);
+	if (is_stack_a_sorted(*stack_a))
+		return 1;
+	if(beggest_node == *stack_a)
+		ra(stack_a);
+	else if ((*stack_a)->next == beggest_node)
+		rra(stack_a);
+	if((*stack_a)->content > (*stack_a)->next->content)
+		sa(stack_a);
 	return 1;
 }
