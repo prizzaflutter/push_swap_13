@@ -6,7 +6,7 @@
 /*   By: iaskour <iaskour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 18:03:46 by iaskour           #+#    #+#             */
-/*   Updated: 2025/02/10 18:03:50 by iaskour          ###   ########.fr       */
+/*   Updated: 2025/02/11 10:38:25 by iaskour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,11 +80,11 @@ void sort_stack (t_list **stack_a, t_list **stack_b)
 		pb(stack_b, stack_a);
 	while(size_of_a-- > 3 && !is_stack_a_sorted(*stack_a))
 	{
-		init_nodes_a(*stack_a, *stack_b);	
+		init_nodes_a(*stack_a, *stack_b);
 		move_a_to_b(stack_a, stack_b);
 	}
+	
 	sort_3(stack_a);
-	// get_maximun_to_top(stack_b);
 	int size_of_b = ft_lstsize(*stack_b);
 	while(size_of_b-- > 0)
 	{
@@ -92,8 +92,6 @@ void sort_stack (t_list **stack_a, t_list **stack_b)
 		move_b_to_a(stack_a, stack_b);
 	}
 	set_index_median(*stack_a);
-	// min_on_top(stack_a);
 	get_minumum_to_top(stack_a);
-	// print_stack(*stack_a);
 }
 

@@ -60,7 +60,7 @@ void set_target_a (t_list *a, t_list *b)
 			}
 			current_b = current_b->next;
 		}
-		if(target_node == NULL)
+		if(!target_node)
 			target_node = get_max_node(b);
 		a->target_node = target_node;
 		a = a->next;
@@ -80,6 +80,9 @@ void set_cost_a (t_list *a, t_list *b)
 		a->cost = a->index;
 		if(a->above_median == 0)
 			a->cost  = size_a - (a->index);
+		else 
+			a->cost  = a->index;
+		
 		if(a->target_node->above_median == 1)
 			a->cost  += a->target_node->index;
 		else 
@@ -89,32 +92,37 @@ void set_cost_a (t_list *a, t_list *b)
 }
 
 
-void set_cheapest (t_list *stack)
-{
-	long cheapest_value;
-	t_list *cheapest_node = NULL;
 
-	cheapest_value = LONG_MAX;
-	if(!stack)
-		return ;
-	t_list *tmp = stack;
+void set_cheapest(t_list *stack)
+{
+    if (!stack)
+        return;
+
+    t_list *cheapest_node = NULL;
+    long cheapest_value = LONG_MAX; 
+
+    t_list *tmp = stack;
     while (tmp)
     {
-        tmp->cheapest = 0;
+        tmp->cheapest = 0; 
         tmp = tmp->next;
     }
-	while (stack)
-	{
-		if(stack->cost < cheapest_value)
-		 {
-			cheapest_value = stack->cost;
-			cheapest_node = stack;
 
-			if (cheapest_value == 0)
-				break;
-		 }
-		 stack = stack->next;
-	}
-	if(cheapest_node)
-		cheapest_node->cheapest = 1;
+    tmp = stack;
+    while (tmp)
+    {
+        if (tmp->cost < cheapest_value)
+        {
+            cheapest_value = tmp->cost;
+            cheapest_node = tmp;
+
+            if (cheapest_value == 0) 
+                break;
+        }
+        tmp = tmp->next;
+    }
+
+    if (cheapest_node)
+        cheapest_node->cheapest = 1;
 }
+

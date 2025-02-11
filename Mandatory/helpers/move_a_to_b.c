@@ -26,21 +26,22 @@ void process_for_push (t_list **stack, t_list *top_node, char stack_name)
 
 t_list *get_cheapest_node (t_list *stack)
 {
-	t_list *cheapest_node = stack;
-	t_list *tmp = stack;
-	while (tmp)
+	while (stack)
 	{
-		if (tmp->cost < cheapest_node->cost)
-			cheapest_node = tmp;
-		tmp = tmp->next;
+		if (stack->cheapest == 1)
+			return stack;
+		stack = stack->next;
 	}
-	return cheapest_node;
+	return NULL;
 }
 
 void rotate_both (t_list **stack_a, t_list **stack_b, t_list *cheapest_node)
 {
-	while (*stack_a != cheapest_node && *stack_b != cheapest_node->target_node)
+	t_list *tmp_a = *stack_a;
+	t_list *tmp_b = *stack_b;
+	while (tmp_a != cheapest_node && tmp_b != cheapest_node->target_node)
 		rr(stack_a, stack_b);
+
 	set_index_median(*stack_a);
 	set_index_median(*stack_b);
 }
@@ -49,18 +50,23 @@ void reverse_rotate_both (t_list **stack_a, t_list **stack_b, t_list *cheapest_n
 {
 	while (*stack_a != cheapest_node && *stack_b != cheapest_node->target_node)
 		rrr(stack_a, stack_b);
+
 	set_index_median(*stack_a);
 	set_index_median(*stack_b);
 }
 
 void move_a_to_b (t_list **stack_a , t_list **stack_b)
 {
+
+
 	t_list *cheapest_node = get_cheapest_node(*stack_a);
+	if(!cheapest_node)
+		return ;
 	
-	if (cheapest_node->above_median == 1 && cheapest_node->target_node->above_median == 1)
-		rotate_both(stack_a, stack_b, cheapest_node);
-	else if (cheapest_node->above_median == 0 && cheapest_node->target_node->above_median == 0)
-		reverse_rotate_both(stack_a, stack_b, cheapest_node);
+	// if (cheapest_node->above_median == 1 && cheapest_node->target_node->above_median == 1)
+	// 	rotate_both(stack_a, stack_b, cheapest_node);
+	// else if (cheapest_node->above_median == 0 && cheapest_node->target_node->above_median == 0)
+	// 	reverse_rotate_both(stack_a, stack_b, cheapest_node);
 	process_for_push(stack_a, cheapest_node, 'a');
 	process_for_push(stack_b, cheapest_node->target_node, 'b');
 	pb(stack_b, stack_a);
