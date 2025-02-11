@@ -6,7 +6,7 @@
 /*   By: iaskour <iaskour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 18:03:46 by iaskour           #+#    #+#             */
-/*   Updated: 2025/02/11 10:38:25 by iaskour          ###   ########.fr       */
+/*   Updated: 2025/02/11 13:41:45 by iaskour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,12 @@ void get_minumum_to_top (t_list **stack_a)
 	if (index <=  stack_size / 2)
 	{
 		while ((*stack_a)->content != min)
-			ra(stack_a);
+			ra(stack_a, 1);
 	}
 	else
 	{
 		while ((*stack_a)->content != min)
-			rra(stack_a);
+			rra(stack_a, 1);
 	}
 }
 
@@ -57,18 +57,10 @@ void init_nodes_b (t_list *stack_a, t_list *stack_b)
 	set_index_median(stack_b);
 	set_target_b(stack_a, stack_b);
 	// set_cost_b(stack_a, stack_b);
-	// set_cheapest_b(stack_b);
+	// set_cheapest(stack_b);
 }
 
 
-void print_stack(t_list *stack)
-{
-    while (stack)
-    {
-        printf("%d\n", stack->content);
-        stack = stack->next;
-    }
-}
 
 
 void sort_stack (t_list **stack_a, t_list **stack_b)

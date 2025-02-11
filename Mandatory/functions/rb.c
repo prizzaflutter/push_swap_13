@@ -6,13 +6,13 @@
 /*   By: iaskour <iaskour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 09:25:27 by iaskour           #+#    #+#             */
-/*   Updated: 2025/02/10 11:03:39 by iaskour          ###   ########.fr       */
+/*   Updated: 2025/02/11 11:29:14 by iaskour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-void	rb(t_list **b)
+void	rb(t_list **b, int print_t)
 {
 	t_list *top_b;
 	t_list *travers;
@@ -27,5 +27,6 @@ void	rb(t_list **b)
 	travers->next = top_b;
 	top_b->next = NULL;
 	top_b->prev = travers;
-	ft_putstr("rb\n", 1);
+	if(print_t)
+		ft_putstr("rb\n", 1);
 }

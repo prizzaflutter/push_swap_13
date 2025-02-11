@@ -22,19 +22,19 @@ t_list *get_min_node (t_list *stack)
 }
 
 
-// void min_on_top (t_list **a)
-// {
-// 	t_list *min_node;
+void min_on_top (t_list **a)
+{
+	t_list *min_node;
 
-// 	min_node = get_min_node(*a);
-// 	while ((*a)->content != min_node->content)
-// 	{
-// 		if(min_node->above_median)
-// 			ra(a);
-// 		else
-// 			rra(a);
-// 	}
-// }
+	min_node = get_min_node(*a);
+	while ((*a)->content != min_node->content)
+	{
+		if(min_node->above_median)
+			ra(a, 1);
+		else
+			rra(a, 1);
+	}
+}
 
 
 void set_target_b (t_list *a, t_list *b)
@@ -58,7 +58,7 @@ void set_target_b (t_list *a, t_list *b)
 			}
 			current_a = current_a->next;
 		}
-		if(target_node == NULL)
+		if(!target_node)
 			target_node = get_min_node(a);
 		b->target_node = target_node;
 		b = b->next;
@@ -75,32 +75,12 @@ void set_cost_b (t_list *a, t_list *b)
 	while(b)
 	{
 		b->cost = b->index;
-		if(!(b->above_median))
+		if(b->above_median == 0)
 			b->cost = size_b - (b->index);
-		if(b->target_node->above_median)
+		if(b->target_node->above_median == 1)
 			b->cost += b->target_node->index;
 		else
 			b->cost += size_a - b->target_node->index;
 		b = b->next;
 	}
-}
-
-void set_cheapest_b (t_list *b)
-{
-	long cheapest_value;
-	t_list *cheapest_node;
-
-	cheapest_value = LONG_MAX;
-	if(!b)
-		return ;
-	while (b)
-	{
-		if(b->cost < cheapest_value)
-		{
-			cheapest_value = b->cost;
-			cheapest_node = b;
-		}
-		b = b->next;
-	}
-	cheapest_node->cheapest = 1;
 }

@@ -6,7 +6,7 @@
 /*   By: iaskour <iaskour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 08:31:24 by iaskour           #+#    #+#             */
-/*   Updated: 2025/02/11 10:39:14 by iaskour          ###   ########.fr       */
+/*   Updated: 2025/02/11 13:45:26 by iaskour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,12 +58,12 @@ int	initialize_stack_a(t_list **stack_a, char **argv)
 	while (argv[i] != NULL)
 	{
 		if (syntax_issue(argv[i]) == 0)
-			return(printf("am here in systen_issue\n"), ft_lstclear(stack_a), 0);
+			return(printf("Error\n"), ft_lstclear(stack_a), 0);
 		number = ft_atoi(argv[i]);
 		if (number > INT_MAX || number < INT_MIN)
-			return(printf("am here number > int max : \n"), ft_lstclear(stack_a), 0);
+			return(printf("Error\n"), ft_lstclear(stack_a), 0);
 		if (!dublicated_detected(stack_a, number))
-			return(printf("am her in duplicated_detected \n"), ft_lstclear(stack_a), 0);
+			return(printf("Error\n"), ft_lstclear(stack_a), 0);
 		new = ft_lstnew(number);
 		if (!new)
 			return(ft_lstclear(stack_a), 0);

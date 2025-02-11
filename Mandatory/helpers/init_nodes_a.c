@@ -80,8 +80,6 @@ void set_cost_a (t_list *a, t_list *b)
 		a->cost = a->index;
 		if(a->above_median == 0)
 			a->cost  = size_a - (a->index);
-		else 
-			a->cost  = a->index;
 		
 		if(a->target_node->above_median == 1)
 			a->cost  += a->target_node->index;

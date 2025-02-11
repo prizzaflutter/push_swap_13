@@ -39,11 +39,11 @@ void	sb(t_list **b);
 void	ss(t_list **a, t_list **b);
 void	pa(t_list **a, t_list **b);
 void	pb(t_list **b, t_list **a);
-void	ra(t_list **a);
-void	rb(t_list **b);
+void	ra(t_list **a, int print_t);
+void	rb(t_list **b, int print_t);
 void	rr(t_list **a, t_list **b);
-void	rra(t_list **a);
-void	rrb(t_list **b);
+void	rra(t_list **a, int print_t);
+void	rrb(t_list **b, int print_t);
 void	rrr(t_list **a, t_list **b);
 
 
@@ -68,6 +68,7 @@ void set_cheapest_b (t_list *b);
 void move_a_to_b (t_list **stack_a , t_list **stack_b);
 void move_b_to_a (t_list **stack_a , t_list **stack_b);
 t_list *get_max_node (t_list *b);
+void set_cheapest(t_list *stack);
 void min_on_top (t_list **a);
 
 
