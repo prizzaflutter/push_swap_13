@@ -10,7 +10,7 @@ SRC= ./Mandatory/push_swap.c ./lib/function_from_lib/ft_atoi.c ./lib/function_fr
 	./Mandatory/functions/pa.c ./Mandatory/functions/pb.c ./Mandatory/functions/ra.c ./Mandatory/functions/rb.c \
 	./Mandatory/functions/rr.c ./Mandatory/functions/rra.c ./Mandatory/functions/rrb.c ./Mandatory/functions/rrr.c \
 	./Mandatory/functions/sa.c ./Mandatory/functions/sb.c ./Mandatory/functions/ss.c ./Mandatory/helpers/sort_3.c \
-	./Mandatory/helpers/sort_stack.c \
+	./Mandatory/helpers/sort_stack.c ./Mandatory/helpers/move_b_to_a.c \
 	./Mandatory/helpers/move_a_to_b.c  ./Mandatory/helpers/init_nodes_a.c ./Mandatory/helpers/init_nodes_b.c \
 
 
