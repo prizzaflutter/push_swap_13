@@ -6,7 +6,7 @@
 /*   By: iaskour <iaskour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 08:11:02 by iaskour           #+#    #+#             */
-/*   Updated: 2025/02/12 08:31:43 by iaskour          ###   ########.fr       */
+/*   Updated: 2025/02/12 13:41:44 by iaskour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ typedef struct s_list
 	int				cheapest;
 	struct s_list	*target_node;
 	struct s_list	*next;
-	struct s_list	*prev;
 }	t_list;
 long	ft_atoi(const char *str);
 void	ft_bzero(void *s, size_t n);
@@ -68,6 +67,13 @@ void	move_a_to_b(t_list **stack_a, t_list **stack_b);
 void	move_b_to_a(t_list **stack_a, t_list **stack_b);
 t_list	*get_max_node(t_list *b);
 void	set_cheapest(t_list *stack);
-void	process_for_push (t_list **stack, t_list *top_node, char stack_name);
+void	process_for_push(t_list **stack, t_list *top_node, char stack_name);
+void	free_argv_splited(char **argv_splited);
+char	*ft_strdup(const char *s1);
+size_t	ft_strlen(const char *s);
+void	*ft_memcpy(void *dst, const void *src, size_t n);
+char	*ft_strjoin(char const *s1, char const *s2);
+int		initialize_stack_a(t_list **stack_a, char **argv);
+int		is_space_exist(char *string);
 
 #endif

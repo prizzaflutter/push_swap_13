@@ -6,7 +6,7 @@
 /*   By: iaskour <iaskour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 14:39:04 by iaskour           #+#    #+#             */
-/*   Updated: 2025/02/11 15:19:07 by iaskour          ###   ########.fr       */
+/*   Updated: 2025/02/12 13:36:59 by iaskour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,11 +114,6 @@ void	set_cheapest(t_list *stack)
 	while (tmp)
 	{
 		tmp->cheapest = 0;
-		tmp = tmp->next;
-	}
-	tmp = stack;
-	while (tmp)
-	{
 		if (tmp->cost < cheapest_value)
 		{
 			cheapest_value = tmp->cost;

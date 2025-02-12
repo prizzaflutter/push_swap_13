@@ -6,7 +6,7 @@
 /*   By: iaskour <iaskour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 09:25:27 by iaskour           #+#    #+#             */
-/*   Updated: 2025/02/12 08:17:28 by iaskour          ###   ########.fr       */
+/*   Updated: 2025/02/12 08:48:11 by iaskour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ void	rb(t_list **b, int print_t)
 		travers = travers->next;
 	travers->next = top_b;
 	top_b->next = NULL;
-	top_b->prev = travers;
 	if (print_t)
 		ft_putstr("rb\n", 1);
 }

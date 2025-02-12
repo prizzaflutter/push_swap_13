@@ -6,6 +6,8 @@
         "chrono": "c",
         "iterator": "c",
         "__config": "c",
-        "algorithm": "c"
+        "algorithm": "c",
+        "string": "c",
+        "iosfwd": "c"
     }
 }

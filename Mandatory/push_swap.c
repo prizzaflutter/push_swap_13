@@ -6,102 +6,111 @@
 /*   By: iaskour <iaskour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 08:31:24 by iaskour           #+#    #+#             */
-/*   Updated: 2025/02/11 15:54:22 by iaskour          ###   ########.fr       */
+/*   Updated: 2025/02/12 13:26:34 by iaskour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	syntax_issue(char *argument)
+char	**merge_string(char *string)
 {
-	int	i;
+	char	**merged_string;
 
-	i = 0;
-	while (argument[i])
+	merged_string = NULL;
+	if (is_space_exist(string) == 1)
+		merged_string = ft_split(string, ' ');
+	else
 	{
-		if ((argument[i] == '-' || argument[i] == '+') && i == 0)
-			i++;
-		if (!ft_isdigit(argument[i]))
+		merged_string = (char **)malloc(sizeof(char *) * 2);
+		if (!merged_string)
 			return (0);
-		i++;
+		merged_string[0] = ft_strdup(string);
+		merged_string[1] = NULL;
 	}
-	return (1);
+	return (merged_string);
 }
 
-int	dublicated_detected(t_list **stack_a, long number)
+int	size_of_string(char **string)
 {
-	t_list	*tmp;
+	int	size_of_string;
 
-	tmp = *stack_a;
-	while (tmp)
-	{
-		if (tmp->content == number)
-			return (0);
-		tmp = tmp->next;
-	}
-	return (1);
+	size_of_string = 0;
+	while (string && string[size_of_string])
+		size_of_string++;
+	return (size_of_string);
 }
 
-int	initialize_stack_a(t_list **stack_a, char **argv)
+char	**join_argument(char **merged_string, char **new_string)
 {
 	int		i;
-	long	number;
-	t_list	*new;
+	int		j;
+	char	**result;
 
+	result = (char **)malloc(sizeof(char *)
+			*(size_of_string(merged_string) + size_of_string(new_string) + 1));
+	if (!result)
+		return (0);
 	i = 0;
-	while (argv[i] != NULL)
+	while (i < size_of_string(merged_string))
 	{
-		if (syntax_issue(argv[i]) == 0)
-			return (ft_putstr("Error\n", 2), ft_lstclear(stack_a), 0);
-		number = ft_atoi(argv[i]);
-		if (number > INT_MAX || number < INT_MIN)
-			return (ft_putstr("Error\n", 2), ft_lstclear(stack_a), 0);
-		if (!dublicated_detected(stack_a, number))
-			return (ft_putstr("Error\n", 2), ft_lstclear(stack_a), 0);
-		new = ft_lstnew(number);
-		if (!new)
-			return (ft_lstclear(stack_a), 0);
-		ft_lstadd_back(stack_a, new);
+		result[i] = ft_strdup(merged_string[i]);
 		i++;
 	}
-	return (1);
-}
-
-int	is_stack_a_sorted(t_list *stack_a)
-{
-	while (stack_a && stack_a->next)
+	j = 0;
+	while (j < size_of_string(new_string))
 	{
-		if (stack_a->content > stack_a->next->content)
-			return (0);
-		stack_a = stack_a->next;
+		result[i] = ft_strdup(new_string[j]);
+		j++;
 	}
-	return (1);
+	result[i + j] = NULL;
+	if (merged_string)
+		free_argv_splited(merged_string);
+	return (result);
 }
 
-int	main(int argc, char *argv[])
+void	start_algo(char **items)
 {
 	t_list	*stack_a;
-	char	**argv_splited;
 	t_list	*stack_b;
 
 	stack_a = NULL;
-	argv_splited = NULL;
 	stack_b = NULL;
-	if (argc == 1 || (argc == 2 && !argv[1][0]))
-		return (1);
-	else if (argc == 2)
-		argv_splited = ft_split(argv[1], ' ');
-	if (argv_splited && *argv_splited != NULL)
-		initialize_stack_a(&stack_a, argv_splited);
-	else
-		initialize_stack_a(&stack_a, argv + 1);
-	if (!is_stack_a_sorted(stack_a))
+	if (!initialize_stack_a(&stack_a, items) || !is_stack_a_sorted(stack_a))
 	{
 		if (ft_lstsize(stack_a) == 2)
-			return (sa(&stack_a), 1);
+			sa(&stack_a);
 		else if (ft_lstsize(stack_a) == 3)
 			sort_3(&stack_a);
 		else
 			sort_stack(&stack_a, &stack_b);
 	}
+	free_argv_splited(items);
+	ft_lstclear(&stack_a);
+	ft_lstclear(&stack_b);
+}
+
+int	main(int argc, char *argv[])
+{
+	char	**merged_string;
+	int		i;
+	char	**new_string;
+
+	i = 0;
+	if (argc == 1 || (argc == 2 && !argv[1][0]))
+		return (1);
+	else if (argc == 2)
+		merged_string = ft_split(argv[1], ' ');
+	else
+	{
+		while (i < argc - 1 > 0)
+		{
+			new_string = merge_string(argv[i + 1]);
+			if (!new_string)
+				return (1);
+			merged_string = join_argument(merged_string, new_string);
+			free_argv_splited(new_string);
+			i++;
+		}
+	}
+	start_algo(merged_string);
 }

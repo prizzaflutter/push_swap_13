@@ -6,7 +6,7 @@
 /*   By: iaskour <iaskour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 12:26:18 by iaskour           #+#    #+#             */
-/*   Updated: 2025/02/10 11:10:03 by iaskour          ###   ########.fr       */
+/*   Updated: 2025/02/12 13:42:10 by iaskour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	ft_lstclear(t_list **lst)
 	t_list	*tmp;
 
 	if (lst == NULL || (*lst) == NULL)
-			return ;
+		return ;
 	while (*lst)
 	{
 		tmp = (*lst)->next;

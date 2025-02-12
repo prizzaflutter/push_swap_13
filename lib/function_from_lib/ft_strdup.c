@@ -1,34 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rrb.c                                              :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: iaskour <iaskour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/03 09:44:51 by iaskour           #+#    #+#             */
-/*   Updated: 2025/02/12 08:52:49 by iaskour          ###   ########.fr       */
+/*   Created: 2024/10/27 12:40:26 by iaskour           #+#    #+#             */
+/*   Updated: 2025/02/12 09:50:49 by iaskour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "../../Mandatory/push_swap.h"
 
-void	rrb(t_list **b, int print_t)
+char	*ft_strdup(const char *s1)
 {
-	t_list	*last_b;
-	t_list	*before_last_b;
+	char	*dst;
+	char	*src;
+	int		len;
 
-	if (!b || !(*b) || !(*b)->next)
-		return ;
-	last_b = *b;
-	while (last_b->next)
-	{
-		before_last_b = last_b;
-		last_b = last_b->next;
-	}
-	if (before_last_b)
-		before_last_b->next = NULL;
-	last_b->next = *b;
-	*b = last_b;
-	if (print_t)
-		ft_putstr("rrb\n", 1);
+	len = ft_strlen(s1) + 1;
+	src = (char *)s1;
+	dst = (char *) malloc (len);
+	if (dst == NULL)
+		return (NULL);
+	ft_memcpy(dst, src, len);
+	return (dst);
 }

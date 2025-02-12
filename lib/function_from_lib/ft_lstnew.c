@@ -6,7 +6,7 @@
 /*   By: iaskour <iaskour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/01 11:06:33 by iaskour           #+#    #+#             */
-/*   Updated: 2025/02/07 16:16:38 by iaskour          ###   ########.fr       */
+/*   Updated: 2025/02/12 08:44:39 by iaskour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,5 @@ t_list	*ft_lstnew(int content)
 		return (NULL);
 	head->content = content;
 	head->next = NULL;
-	head->prev = NULL;
 	return (head);
 }
